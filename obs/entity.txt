@@ -1,0 +1,240 @@
+
+tablo: Auth 
+columns:
+id(pk)
+tckn (string)
+sifre (string)
+role (fk)
+createAt (date)
+updatedAt (date)
+createBy (date)
+updateBy (date)
+deleted (Bool)
+
+tablo: role
+column:
+id(pk)
+name (string)
+description (string)
+createAt (date)
+updatedAt (date)
+createBy (date)
+updateBy (date)
+deleted (Bool)
+
+
+tablo: Yonetici
+columns:
+id (pk)
+Auth (fk) 17
+ad (string)
+soyad (string)
+dogumtarihi (date)
+atanmaTarihi (date)
+cinsiyet (Enum)
+biyografi (string)
+createAt (date)
+updatedAt (date)
+createBy (date)
+updateBy (date)
+deleted (Bool)
+
+tablo: Ogretmen
+columns:
+id (pk)
+Auth (fk) 17
+ad (string)
+soyad (string)
+dogumtarihi (date)
+atanmaTarihi (date)
+cinsiyet (Enum)
+biyografi (string)
+sýnýf (fk)
+maas (decimal)
+createAt (date)
+updatedAt (date)
+createBy (date)
+updateBy (date)
+deleted (Bool)
+
+
+tablo: ogretmen_brans
+columns:
+id (pk)
+ogretmen (fk)
+brans(fk)
+
+tablo: sýnýf
+columns:
+id (pk)
+ogretmen (fk)
+kapasite (int)
+kat (int)
+code (string)
+sube (string)
+createAt (date)
+updatedAt (date)
+createBy (date)
+updateBy (date)
+deleted (Bool)
+
+
+tablo: ogrenci
+columns:
+id (pk)
+Auth (fk)
+ad (string)
+soyad (string)
+dogumtarihi (date)
+cinsiyet (Enum)
+telefon (string)
+kayitTarihi (date)
+sýnýf (fk)
+numara (int)
+createAt (date)
+updatedAt (date)
+createBy (date)
+updateBy (date)
+deleted (Bool)
+
+
+tablo: brans
+columns:
+id (pk)
+ad (string)
+aciklama (string)
+createAt (date)
+updatedAt (date)
+createBy (date)
+updateBy (date)
+deleted (Bool)
+
+tablo: calisan
+columns:
+id (pk)
+Auth (fk)
+ad (string)
+soyad (string)
+dogumtarihi (date)
+cinsiyet (Enum)
+Role (enum)
+iseBaslama (date)
+telefon (string)
+createAt (date)
+updatedAt (date)
+createBy (date)
+updateBy (date)
+deleted (Bool)
+
+
+tablo: yoklama
+columns:
+id (pk)
+ogretmen (fk)
+yoklamaTarihi(date)
+brans (fk)
+createAt (date)
+updatedAt (date)
+createBy (date)
+updateBy (date)
+deleted (Bool)
+
+tablo: ogrenci_yoklama
+columns:
+yoklama(fk)
+ogrenci(fk)
+burada (Bool)
+createAt (date)
+updatedAt (date)
+createBy (date)
+updateBy (date)
+deleted (Bool)
+
+tablo: sikayet
+columns:
+id (pk)
+baslik
+konu
+cozuldumu (Bool)
+Auth (fk)
+createAt (date)
+updatedAt (date)
+createBy (date)
+updateBy (date)
+deleted (Bool)
+
+
+tablo: sýnav
+columns:
+id (pk)
+brans (fk)
+ogretmen (fk)
+sure (int)
+nezaman (date)
+createAt (date)
+updatedAt (date)
+createBy (date)
+updateBy (date)
+deleted (Bool)
+
+
+tablo: soru
+columns:
+id (pk)
+title (string)
+icerik (string) (hangisi geometrik sekil degildir ? )
+puan (int)
+siklimi (Bool)
+siklar (string)
+dogrucevap (string)
+createAt (date)
+updatedAt (date)
+createBy (date)
+updateBy (date)
+deleted (Bool)
+
+
+tablo: sýnav-soru
+columns:
+id (pk)
+sýnav (fk)
+soru (fk)
+createAt (date)
+updatedAt (date)
+createBy (date)
+updateBy (date)
+deleted (Bool)
+
+
+tablo: verilencevap
+columns:
+id (pk)
+ogrenci (fk)
+sýnav-soru (fk) 
+cevap (string) 
+puan (int)
+createAt (date)
+updatedAt (date)
+createBy (date)
+updateBy (date)
+deleted (Bool)
+
+
+tablo: sýnavsonuc
+columns:
+id (pk)
+puan (int)
+insiyatif (Bool)
+harfnotu (string)
+ogrenci (fk)
+sýnav (fk)
+createAt (date)
+updatedAt (date)
+createBy (date)
+updateBy (date)
+deleted (Bool)
+
+
+
+
+s
