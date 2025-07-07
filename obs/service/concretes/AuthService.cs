@@ -3,6 +3,7 @@ using obs.dto;
 using obs.entity;
 using obs.entity.enums;
 using obs.service.abstracts;
+using obs.util;
 
 namespace obs.service.concretes
 {
@@ -12,12 +13,16 @@ namespace obs.service.concretes
         IStudentService studentService;
         ITeacherService teacherService;
         IManagerService managerService;
+        JwtManager jwtManager;
 
-        public AuthService(ObsContext obsContext)
+        public AuthService(ObsContext obsContext, IStudentService studentService, ITeacherService teacherService, IManagerService managerService, JwtManager jwtManager)
         {
             this.obsContext = obsContext;
+            this.studentService = studentService;
+            this.teacherService = teacherService;
+            this.managerService = managerService;
+            this.jwtManager = jwtManager;
         }
-
 
         public AuthResponseDto save(AuthSaveRequestDto request)
         {
@@ -41,18 +46,15 @@ namespace obs.service.concretes
 
             if (role.Name.Equals(ERole.STUDENT))
             {
-                auth.Id;
+                studentService.save(request,auth.Id);
             }
             else if (role.Name.Equals(ERole.MANAGER))
             {
-
+                managerService.save(request, auth.Id);
             }
             else if (role.Name.Equals(ERole.TEACHER))
             {
-
-            }
-            else if (role.Name.Equals(ERole.EMPLOYEE))
-            {
+                teacherService.save(request, auth.Id);
 
             }
             else
@@ -62,12 +64,35 @@ namespace obs.service.concretes
 
             AuthResponseDto authResponseDto = new AuthResponseDto();
             authResponseDto.IdentityNumber = auth.IdentityNumber;
-
-        
+            authResponseDto.AuthId = auth.Id;
             authResponseDto.role = roleResponse;
 
             return authResponseDto;
          
+        }
+
+
+        public string login(string tckn, string password)
+        {
+            Auth? auth=obsContext.Auths.FirstOrDefault(x => x.IdentityNumber.Equals(tckn));
+            if (auth == null)
+            {
+                throw new Exception(message: "tckn ye ait birisi bulunamadi.");
+            }
+
+            if (!auth.Password.Equals(password))
+            {
+                throw new Exception(message: "yanlis sifre.");
+            }
+
+            string token=jwtManager.CreateToken(auth.Id);
+            return token;
+
+        }
+
+        public string TokenOnayı(string token)
+        {
+            return jwtManager.ValidateToken(token);
         }
     }
 }

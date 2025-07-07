@@ -1,6 +1,6 @@
-INSERT INTO Role (Name, Description, CreateAt, Deleted)
+INSERT INTO Roles (Name, Description, CreateAt, Deleted)
 VALUES 
-('MANAGER', 'Manages the system', GETDATE(), 0),
-('TEACHER', 'Teaches students', GETDATE(), 0),
-('STUDENT', 'Learns from teachers', GETDATE(), 0),
-('EMPLOYEE', 'Supports the institution', GETDATE(), 0);
+(1, 'Manages the system', GETDATE(), 0),
+(2, 'Teaches students', GETDATE(), 0),
+(3, 'Learns from teachers', GETDATE(), 0),
+(4,'Supports the institution', GETDATE(), 0);

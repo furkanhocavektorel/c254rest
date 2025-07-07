@@ -12,8 +12,8 @@ using obs.Context;
 namespace obs.Migrations
 {
     [DbContext(typeof(ObsContext))]
-    [Migration("20250704173145_teacher,manager,student eklendi")]
-    partial class teachermanagerstudenteklendi
+    [Migration("20250707160253_first")]
+    partial class first
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)

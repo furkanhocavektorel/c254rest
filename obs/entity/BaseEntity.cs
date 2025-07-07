@@ -8,8 +8,8 @@ namespace obs.entity
         [Key]
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public long Id { get; set; }
-        public DateTime? CreateAt { get; set; } = default(DateTime?);
-        public DateTime? UpdatedAt { get; set; } = default(DateTime?);
+        public DateTime? CreateAt { get; set; } = DateTime.UtcNow;
+        public DateTime? UpdatedAt { get; set; } = DateTime.UtcNow;
         public string? CreateBy { get; set; }
         public string? UpdateBy { get; set; }
         public bool? Deleted { get; set; } = false;

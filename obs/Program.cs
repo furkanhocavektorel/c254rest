@@ -2,6 +2,7 @@
 using obs.Context;
 using obs.service.abstracts;
 using obs.service.concretes;
+using obs.util;
 
 namespace obs
 {
@@ -17,6 +18,7 @@ namespace obs
             builder.Services.AddSwaggerGen();
 
             builder.Services.AddScoped<ObsContext>();
+            builder.Services.AddScoped<JwtManager>();
             builder.Services.AddScoped<IAuthService, AuthService>();
             builder.Services.AddScoped<IStudentService, StudentService>();
             builder.Services.AddScoped<IManagerService, ManagerService>();
