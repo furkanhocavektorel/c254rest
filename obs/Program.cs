@@ -1,4 +1,8 @@
 
+using obs.Context;
+using obs.service.abstracts;
+using obs.service.concretes;
+
 namespace obs
 {
     public class Program
@@ -11,6 +15,12 @@ namespace obs
             builder.Services.AddControllers();
             builder.Services.AddEndpointsApiExplorer();
             builder.Services.AddSwaggerGen();
+
+            builder.Services.AddScoped<ObsContext>();
+            builder.Services.AddScoped<IAuthService, AuthService>();
+            builder.Services.AddScoped<IStudentService, StudentService>();
+            builder.Services.AddScoped<IManagerService, ManagerService>();
+            builder.Services.AddScoped<ITeacherService, TeacherService>();
 
             var app = builder.Build();
 

@@ -1,0 +1,6 @@
+INSERT INTO Role (Name, Description, CreateAt, Deleted)
+VALUES 
+('MANAGER', 'Manages the system', GETDATE(), 0),
+('TEACHER', 'Teaches students', GETDATE(), 0),
+('STUDENT', 'Learns from teachers', GETDATE(), 0),
+('EMPLOYEE', 'Supports the institution', GETDATE(), 0);

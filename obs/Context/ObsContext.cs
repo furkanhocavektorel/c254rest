@@ -1,4 +1,5 @@
 ﻿using Microsoft.EntityFrameworkCore;
+using obs.entity;
 
 namespace obs.Context
 {
@@ -10,5 +11,10 @@ namespace obs.Context
             optionsBuilder.UseSqlServer("Server=LAB501-OGRETMEN;Database=obs;TrustServerCertificate=True;Trusted_Connection=True;");
         }
 
+        public DbSet<Auth> Auths { get; set; }
+        public DbSet<Role> Roles { get; set; }
+        public DbSet<Manager> Managers { get; set; }
+        public DbSet<Teacher> Teachers { get; set; }
+        public DbSet<Student> Students { get; set; }
     }
 }

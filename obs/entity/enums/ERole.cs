@@ -2,6 +2,9 @@
 {
     public enum ERole
     {
-        MANAGER,TEACHER,STUDENT,EMPLOYEE
+        MANAGER=1,
+        TEACHER=2,
+        STUDENT=3,
+        EMPLOYEE=4
     }
 }
