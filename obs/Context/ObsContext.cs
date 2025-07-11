@@ -16,5 +16,7 @@ namespace obs.Context
         public DbSet<Manager> Managers { get; set; }
         public DbSet<Teacher> Teachers { get; set; }
         public DbSet<Student> Students { get; set; }
+        public DbSet<Branch> Branches{ get; set; }
+        public DbSet<Teacher_Branch> Teacher_Branches{ get; set; }
     }
 }

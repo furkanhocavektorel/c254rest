@@ -9,15 +9,15 @@ namespace obs.service.concretes
 {
     public class AuthService : IAuthService
     {
-        ObsContext obsContext;
+        ObsContext context;
         IStudentService studentService;
         ITeacherService teacherService;
         IManagerService managerService;
         JwtManager jwtManager;
 
-        public AuthService(ObsContext obsContext, IStudentService studentService, ITeacherService teacherService, IManagerService managerService, JwtManager jwtManager)
+        public AuthService(ObsContext context, IStudentService studentService, ITeacherService teacherService, IManagerService managerService, JwtManager jwtManager)
         {
-            this.obsContext = obsContext;
+            this.context = context;
             this.studentService = studentService;
             this.teacherService = teacherService;
             this.managerService = managerService;
@@ -26,7 +26,7 @@ namespace obs.service.concretes
 
         public AuthResponseDto save(AuthSaveRequestDto request)
         {
-            Role? role = obsContext.Roles.Find(request.RoleId);
+            Role? role = context.Roles.Find(request.RoleId);
             RoleResponseDto roleResponse = new RoleResponseDto();
             roleResponse.RoleId = role.Id; // 77
             roleResponse.RoleName = role.Name.ToString();
@@ -36,8 +36,8 @@ namespace obs.service.concretes
             auth.RoleId= request.RoleId;
             auth.Password= request.Password;
 
-            auth = obsContext.Auths.Add(auth).Entity;
-            obsContext.SaveChanges();
+            auth = context.Auths.Add(auth).Entity;
+            context.SaveChanges();
 
             // SOLID
             // Solide aykırı bir yaklaşım bu
@@ -74,7 +74,7 @@ namespace obs.service.concretes
 
         public string login(string tckn, string password)
         {
-            Auth? auth=obsContext.Auths.FirstOrDefault(x => x.IdentityNumber.Equals(tckn));
+            Auth? auth=context.Auths.FirstOrDefault(x => x.IdentityNumber.Equals(tckn));
             if (auth == null)
             {
                 throw new Exception(message: "tckn ye ait birisi bulunamadi.");
@@ -90,9 +90,9 @@ namespace obs.service.concretes
 
         }
 
-        public string TokenOnayı(string token)
+        public Auth? getById(long id)
         {
-            return jwtManager.ValidateToken(token);
+            return context.Auths.Find(id);
         }
     }
 }

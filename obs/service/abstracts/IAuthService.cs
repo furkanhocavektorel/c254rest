@@ -1,4 +1,5 @@
 ﻿using obs.dto;
+using obs.entity;
 
 namespace obs.service.abstracts
 {
@@ -6,6 +7,7 @@ namespace obs.service.abstracts
     {
         string login(string tckn, string password);
         AuthResponseDto save(AuthSaveRequestDto request);
-        string TokenOnayı(string token);
+
+        Auth? getById(long id);
     }
 }

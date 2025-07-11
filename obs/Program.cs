@@ -23,6 +23,8 @@ namespace obs
             builder.Services.AddScoped<IStudentService, StudentService>();
             builder.Services.AddScoped<IManagerService, ManagerService>();
             builder.Services.AddScoped<ITeacherService, TeacherService>();
+            builder.Services.AddScoped<IBranchService, BranchService>();
+            builder.Services.AddScoped<AuthUtil>();
 
             var app = builder.Build();
 
