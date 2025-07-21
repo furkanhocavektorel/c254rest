@@ -11,7 +11,7 @@ namespace obs.service.concretes
     {
         ObsContext context;
         IStudentService studentService;
-        ITeacherService teacherService;
+        //ITeacherService teacherService;
         IManagerService managerService;
         JwtManager jwtManager;
 
@@ -19,7 +19,7 @@ namespace obs.service.concretes
         {
             this.context = context;
             this.studentService = studentService;
-            this.teacherService = teacherService;
+            // this.teacherService = teacherService;
             this.managerService = managerService;
             this.jwtManager = jwtManager;
         }
@@ -32,9 +32,9 @@ namespace obs.service.concretes
             roleResponse.RoleName = role.Name.ToString();
 
             Auth auth = new Auth();
-            auth.IdentityNumber= request.IdentityNumber;
-            auth.RoleId= request.RoleId;
-            auth.Password= request.Password;
+            auth.IdentityNumber = request.IdentityNumber;
+            auth.RoleId = request.RoleId;
+            auth.Password = request.Password;
 
             auth = context.Auths.Add(auth).Entity;
             context.SaveChanges();
@@ -46,7 +46,7 @@ namespace obs.service.concretes
 
             if (role.Name.Equals(ERole.STUDENT))
             {
-                studentService.save(request,auth.Id);
+                studentService.save(request, auth.Id);
             }
             else if (role.Name.Equals(ERole.MANAGER))
             {
@@ -54,7 +54,7 @@ namespace obs.service.concretes
             }
             else if (role.Name.Equals(ERole.TEACHER))
             {
-                teacherService.save(request, auth.Id);
+                //         teacherService.save(request, auth.Id);
 
             }
             else
@@ -68,13 +68,13 @@ namespace obs.service.concretes
             authResponseDto.role = roleResponse;
 
             return authResponseDto;
-         
+
         }
 
 
         public string login(string tckn, string password)
         {
-            Auth? auth=context.Auths.FirstOrDefault(x => x.IdentityNumber.Equals(tckn));
+            Auth? auth = context.Auths.FirstOrDefault(x => x.IdentityNumber.Equals(tckn));
             if (auth == null)
             {
                 throw new Exception(message: "tckn ye ait birisi bulunamadi.");
@@ -85,7 +85,7 @@ namespace obs.service.concretes
                 throw new Exception(message: "yanlis sifre.");
             }
 
-            string token=jwtManager.CreateToken(auth.Id);
+            string token = jwtManager.CreateToken(auth.Id);
             return token;
 
         }

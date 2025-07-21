@@ -1,6 +1,7 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using obs.config;
 using obs.dto;
+using obs.service.abstracts;
 
 namespace obs.Controllers
 {
@@ -8,6 +9,20 @@ namespace obs.Controllers
     [ApiController]
     public class TeacherController
     {
+        ITeacherService teacherService;
+
+        public TeacherController(ITeacherService teacherService)
+        {
+            this.teacherService = teacherService;
+        }
+
+        [HttpPost("assign-branch")]
+        public void assignBranch([FromBody] AssignBranchRequestDto dto)
+        {
+            teacherService.assignBranch(dto);
+        }
+
+
 
 
     }
