@@ -2,6 +2,8 @@
 using Microsoft.AspNetCore.Mvc;
 using obs.config;
 using obs.dto;
+using obs.dto.request;
+using obs.dto.response;
 using obs.service.abstracts;
 
 namespace obs.Controllers
@@ -15,19 +17,21 @@ namespace obs.Controllers
         {
             this.authService = authService;
         }
-
+        //
         [HttpPost(EndPoints.Register)]
-        public AuthResponseDto save([FromBody] AuthSaveRequestDto request)
+        public BaseResponseDto<AuthResponseDto> save([FromBody] AuthSaveRequestDto request)
         {
-            return authService.save(request);
+
+return BaseResponseDto<AuthResponseDto>.Successfuly(authService.save(request));
 
         }
 
-        [HttpGet("login/{tckn}")]
-        public string login([FromRoute] string tckn,[FromQuery] string password)
-        {
+    
 
-            return authService.login(tckn, password);
+        [HttpGet("login/{tckn}")]
+        public BaseResponseDto<string> login([FromRoute] string tckn,[FromQuery] string password)
+        {       
+            return new BaseResponseDto<string>(authService.login(tckn, password));
         }
 
 

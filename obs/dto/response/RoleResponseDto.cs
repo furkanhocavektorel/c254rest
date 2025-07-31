@@ -1,4 +1,4 @@
-﻿namespace obs.dto
+﻿namespace obs.dto.response
 {
     public class RoleResponseDto
     {

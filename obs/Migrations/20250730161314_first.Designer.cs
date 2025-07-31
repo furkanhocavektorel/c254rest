@@ -12,7 +12,7 @@ using obs.Context;
 namespace obs.Migrations
 {
     [DbContext(typeof(ObsContext))]
-    [Migration("20250721160200_first")]
+    [Migration("20250730161314_first")]
     partial class first
     {
         /// <inheritdoc />

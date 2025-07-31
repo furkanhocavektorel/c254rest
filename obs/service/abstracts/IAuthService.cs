@@ -1,4 +1,5 @@
-﻿using obs.dto;
+﻿using obs.dto.request;
+using obs.dto.response;
 using obs.entity;
 
 namespace obs.service.abstracts

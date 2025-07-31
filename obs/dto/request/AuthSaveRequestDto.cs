@@ -1,5 +1,4 @@
-﻿
-namespace obs.dto
+﻿namespace obs.dto.request
 {
     public class AuthSaveRequestDto
     {

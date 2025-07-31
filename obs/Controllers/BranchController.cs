@@ -1,6 +1,6 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using obs.config;
-using obs.dto;
+using obs.dto.request;
 using obs.service.abstracts;
 using obs.util;
 

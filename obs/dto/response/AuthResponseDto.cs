@@ -1,4 +1,4 @@
-﻿namespace obs.dto
+﻿namespace obs.dto.response
 {
     public class AuthResponseDto
     {
@@ -8,6 +8,6 @@
         public RoleResponseDto role { get; set; }
 
     }
-   
+
 
 }

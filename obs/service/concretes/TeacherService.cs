@@ -1,6 +1,6 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using obs.Context;
-using obs.dto;
+using obs.dto.request;
 using obs.entity;
 using obs.service.abstracts;
 
@@ -55,10 +55,7 @@ namespace obs.service.concretes
             }
         }
 
-        private void deleteBranchForTeacher(Teacher,list)
-        {
-
-        }
+  
 
 
 

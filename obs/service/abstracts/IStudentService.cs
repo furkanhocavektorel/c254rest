@@ -1,4 +1,4 @@
-﻿using obs.dto;
+﻿using obs.dto.request;
 
 namespace obs.service.abstracts
 {

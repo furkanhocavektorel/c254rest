@@ -1,5 +1,5 @@
 ﻿using obs.Context;
-using obs.dto;
+using obs.dto.request;
 using obs.entity;
 using obs.service.abstracts;
 
