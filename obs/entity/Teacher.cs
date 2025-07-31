@@ -1,4 +1,6 @@
-﻿namespace obs.entity
+﻿using obs.entity.builder;
+
+namespace obs.entity
 {
     public class Teacher: BaseEntity
     {
@@ -15,5 +17,11 @@
         // TODO: OGRETMENE BRANS VERILMELI (ENTITY OLARAK TUTULACAK)
 
         public decimal? Salary { get; set; }
+
+        public static TeacherBuilder builder()
+        {
+            return new TeacherBuilder();
+        }
+
     }
 }

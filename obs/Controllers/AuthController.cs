@@ -19,10 +19,11 @@ namespace obs.Controllers
         }
         //
         [HttpPost(EndPoints.Register)]
-        public BaseResponseDto<AuthResponseDto> save([FromBody] AuthSaveRequestDto request)
+        public ActionResult<BaseResponseDto<AuthResponseDto>> save([FromBody] AuthSaveRequestDto request)
         {
 
-return BaseResponseDto<AuthResponseDto>.Successfuly(authService.save(request));
+        
+        return CreatedAtAction(null, BaseResponseDto<AuthResponseDto>.Success(authService.save(request)));
 
         }
 

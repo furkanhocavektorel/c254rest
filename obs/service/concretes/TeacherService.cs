@@ -45,7 +45,7 @@ namespace obs.service.concretes
                 Branch? branch = branchService.getBranch(branchId);
                 if(branch == null)
                 {
-                    throw new Exception("brans bilgisi bulunamadı");
+                    throw new Exception("jhgjf");
                 }
                 Teacher_Branch teacher_Branch = new Teacher_Branch();
                 teacher_Branch.TeacherId = teacher.Id;

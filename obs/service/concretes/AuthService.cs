@@ -1,7 +1,9 @@
 ﻿using obs.Context;
+using obs.dto.builder;
 using obs.dto.request;
 using obs.dto.response;
 using obs.entity;
+using obs.entity.builder;
 using obs.entity.enums;
 using obs.service.abstracts;
 using obs.util;
@@ -56,13 +58,27 @@ namespace obs.service.concretes
             else if (role.Name.Equals(ERole.TEACHER))
             {
                 //         teacherService.save(request, auth.Id);
-                Teacher teacher = new Teacher();
-                teacher.Surname = request.Surname;
-                teacher.Name = request.Name;
-                teacher.AuthId = auth.Id;
+                //Teacher teacher = new Teacher();
+                //teacher.Surname = request.Surname;
+                //teacher.Name = request.Name;
+                //teacher.AuthId = auth.Id;
+
+                Teacher teacher = Teacher.builder()
+                    .authId(auth.Id)
+                    .name(request.Name)
+                    .build();
+
+
 
                 context.Teachers.Add(teacher);
                 context.SaveChanges();
+
+
+
+                RoleResponseDto responseDto = new RoleResponseDtoBuilder()
+                                                .getSetRoleName("asd")
+                                                .build();
+
 
             }
             else
