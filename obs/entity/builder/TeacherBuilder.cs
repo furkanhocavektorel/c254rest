@@ -8,6 +8,7 @@
         private DateOnly? BirthDate;
         private DateOnly? StartDate;
         private string? Sınıf;
+
     
         public TeacherBuilder authId(long authId)
         {
